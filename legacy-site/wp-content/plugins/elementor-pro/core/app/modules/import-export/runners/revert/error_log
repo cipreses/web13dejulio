@@ -1,0 +1,4 @@
+[06-Apr-2026 17:29:50 UTC] PHP Fatal error:  Uncaught Error: Class 'Elementor\App\Modules\ImportExport\Runners\Revert\Revert_Runner_Base' not found in /home/dejulioe/public_html/wp-content/plugins/elementor-pro/core/app/modules/import-export/runners/revert/templates.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/dejulioe/public_html/wp-content/plugins/elementor-pro/core/app/modules/import-export/runners/revert/templates.php on line 12

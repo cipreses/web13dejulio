@@ -1,0 +1,1191 @@
+{
+    "manifest_version": "1.0.21",
+    "title": "Articio \u2013 Art & Drawing School Elementor Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home",
+            "screenshot": "screenshots\/home.jpg",
+            "source": "templates\/home.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/home\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "About",
+            "screenshot": "screenshots\/about.jpg",
+            "source": "templates\/about.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/about\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "MetForm Register",
+            "screenshot": "screenshots\/metform-register.jpg",
+            "source": "templates\/metform-register.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/metform-register\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Class",
+            "screenshot": "screenshots\/class.jpg",
+            "source": "templates\/class.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/class\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Class Details",
+            "screenshot": "screenshots\/class-details.jpg",
+            "source": "templates\/class-details.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/class-details\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Teacher",
+            "screenshot": "screenshots\/teacher.jpg",
+            "source": "templates\/teacher.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/teacher\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "FAQ",
+            "screenshot": "screenshots\/faq.jpg",
+            "source": "templates\/faq.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/faq\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Blog",
+            "screenshot": "screenshots\/blog.jpg",
+            "source": "templates\/blog.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/blog\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Single Post",
+            "screenshot": "screenshots\/single-post.jpg",
+            "source": "templates\/single-post.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/single-blog\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-post",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "MetForm Contact",
+            "screenshot": "screenshots\/metform-contact.jpg",
+            "source": "templates\/metform-contact.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/metform-contact\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact",
+            "screenshot": "screenshots\/contact.jpg",
+            "source": "templates\/contact.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/contact\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/header\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/footer\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "404 Page",
+            "screenshot": "screenshots\/404-page.jpg",
+            "source": "templates\/404-page.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/articio\/template-kit\/404-page\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-404",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Jeg Elementor Kit",
+            "version": "2.1.0",
+            "file": "jeg-elementor-kit\/jeg-elementor-kit.php",
+            "author": "Jegstudio"
+        },
+        {
+            "name": "MetForm",
+            "version": "1.5.4",
+            "file": "metform\/metform.php",
+            "author": "Wpmet"
+        },
+        {
+            "name": "Elementor",
+            "version": "3.5.3",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        }
+    ],
+    "images": [
+        {
+            "filename": "young-white-woman-painter-in-an-art-studio-e1643358499803.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/young-white-woman-painter-in-an-art-studio-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 197380,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-D7DYUBS"
+        },
+        {
+            "filename": "art-school-studies-e1643358281965.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/art-school-studies-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 237305,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-AAWR9L3"
+        },
+        {
+            "filename": "male-art-school-artist-painting-with-oil-on-canvas-e1643358347847.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/male-art-school-artist-painting-with-oil-on-canvas-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 264877,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-LGM59NR"
+        },
+        {
+            "filename": "consulting-student-e1643358476230.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/consulting-student-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 179045,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-USN495P"
+        },
+        {
+            "filename": "studying-in-school-of-arts-e1643358320769.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/studying-in-school-of-arts-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/class-details.json",
+                    "name": "Class Details"
+                }
+            ],
+            "filesize": 210077,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-FN3ZAYX"
+        },
+        {
+            "filename": "art-studies-e1643358412973.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/art-studies-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/class-details.json",
+                    "name": "Class Details"
+                }
+            ],
+            "filesize": 316578,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-939EY6X"
+        },
+        {
+            "filename": "colors-of-palette-e1643358452618.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/colors-of-palette-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/class-details.json",
+                    "name": "Class Details"
+                },
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                },
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                }
+            ],
+            "filesize": 256633,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-MBGDUDQ"
+        },
+        {
+            "filename": "young-woman-in-art-class-e1643358544454.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/young-woman-in-art-class-800x1200.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 234117,
+            "dimensions": [
+                1200,
+                1800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-2LQVY7B"
+        },
+        {
+            "filename": "cropped-image-of-pupil-painting-on-lesson-in-workshop-of-art-school-e1643358383663.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/cropped-image-of-pupil-painting-on-lesson-in-workshop-of-art-school-800x534.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 314785,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-W9R4FDC"
+        },
+        {
+            "filename": "painter-at-work-MA4FXWJ.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/painter-at-work-MA4FXWJ.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 33504,
+            "dimensions": [
+                320,
+                320
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-MA4FXWJ"
+        },
+        {
+            "filename": "course-of-professional-painting-e1643358421237.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/course-of-professional-painting-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 231218,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-KHVKFSD"
+        },
+        {
+            "filename": "painting.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/painting.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 10977,
+            "dimensions": [
+                600,
+                560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-3A5FAQD"
+        },
+        {
+            "filename": "sketch.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/sketch.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 10816,
+            "dimensions": [
+                600,
+                560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-3A5FAQD"
+        },
+        {
+            "filename": "drawing.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/drawing.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 7948,
+            "dimensions": [
+                600,
+                560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-3A5FAQD"
+        },
+        {
+            "filename": "pottery.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/pottery.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 12110,
+            "dimensions": [
+                600,
+                561
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-3A5FAQD"
+        },
+        {
+            "filename": "art-of-colors-e1643358556365.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/art-of-colors-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/blog.json",
+                    "name": "Blog"
+                },
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 281817,
+            "dimensions": [
+                1600,
+                1066
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-MAK8CLU"
+        },
+        {
+            "filename": "digital-3A5FAQD.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/digital-3A5FAQD.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 13619,
+            "dimensions": [
+                602,
+                565
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-3A5FAQD"
+        },
+        {
+            "filename": "women-with-easel-and-palettes-at-art-school-e1643358645175.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/women-with-easel-and-palettes-at-art-school-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 238319,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PMNWQQ8"
+        },
+        {
+            "filename": "pattern.jpeg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/pattern-800x533.jpeg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 192072,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-QKPSLY"
+        },
+        {
+            "filename": "learner-of-art-school-1-e1643358313223.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/learner-of-art-school-1-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 214895,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-V397TCZ"
+        },
+        {
+            "filename": "arrow.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/arrow.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 3121,
+            "dimensions": [
+                675,
+                90
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/templatekit.jegtheme.com\/articio\/"
+        },
+        {
+            "filename": "young-female-describing-abstraction-illustrated-on-painting-e1643358579122.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/young-female-describing-abstraction-illustrated-on-painting-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 309401,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-7WDFY88"
+        },
+        {
+            "filename": "course-of-painting-e1643358403410.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/course-of-painting-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 211569,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-M9DG9WA"
+        },
+        {
+            "filename": "female-painter-SCADRHG.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/female-painter-SCADRHG-800x999.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 155761,
+            "dimensions": [
+                820,
+                1024
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-SCADRHG"
+        },
+        {
+            "filename": "man-sketching-N8YUE6T.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/man-sketching-N8YUE6T-800x999.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 249605,
+            "dimensions": [
+                820,
+                1024
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-N8YUE6T"
+        },
+        {
+            "filename": "successful-learner-3975YG3.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/successful-learner-3975YG3-800x999.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 148908,
+            "dimensions": [
+                820,
+                1024
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-3975YG3"
+        },
+        {
+            "filename": "woman-artists-with-brushes-painting-at-art-school-e1643358338527.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/woman-artists-with-brushes-painting-at-art-school-800x517.jpg",
+            "templates": [
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                },
+                {
+                    "source": "templates\/class-details.json",
+                    "name": "Class Details"
+                }
+            ],
+            "filesize": 257818,
+            "dimensions": [
+                1920,
+                1240
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P2MHKTC"
+        },
+        {
+            "filename": "3d-design.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/3d-design.png",
+            "templates": [
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 5873,
+            "dimensions": [
+                600,
+                562
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-3A5FAQD"
+        },
+        {
+            "filename": "women-with-easel-and-palettes-at-art-school-1-e1643358652485.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/women-with-easel-and-palettes-at-art-school-1-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 203708,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PCUQEEC"
+        },
+        {
+            "filename": "testimonial-83S5W35.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/testimonial-83S5W35.jpg",
+            "templates": [
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 17155,
+            "dimensions": [
+                160,
+                160
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-83S5W35"
+        },
+        {
+            "filename": "testimonial-M6NJPEF.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/testimonial-M6NJPEF.png",
+            "templates": [
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 31858,
+            "dimensions": [
+                160,
+                160
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-M6NJPEF"
+        },
+        {
+            "filename": "testimonial-N8572T7.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/testimonial-N8572T7.jpg",
+            "templates": [
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 29574,
+            "dimensions": [
+                160,
+                160
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-N8572T7"
+        },
+        {
+            "filename": "testimonial-A8E2W8S.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/testimonial-A8E2W8S.jpg",
+            "templates": [
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                }
+            ],
+            "filesize": 30058,
+            "dimensions": [
+                160,
+                160
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-A8E2W8S"
+        },
+        {
+            "filename": "contemporary-artist-e1643358461669.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/contemporary-artist-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/class.json",
+                    "name": "Class"
+                },
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                }
+            ],
+            "filesize": 237638,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-WP5XD7F"
+        },
+        {
+            "filename": "learner-of-art-school-e1643358273303.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/learner-of-art-school-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/class-details.json",
+                    "name": "Class Details"
+                }
+            ],
+            "filesize": 210522,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-YZREDHB"
+        },
+        {
+            "filename": "painting-geometric-objects-e1643358709550.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/painting-geometric-objects-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 158478,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-F65EAG2"
+        },
+        {
+            "filename": "painting-in-art-studio-RHFUX8R.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/painting-in-art-studio-RHFUX8R-800x999.jpg",
+            "templates": [
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 172398,
+            "dimensions": [
+                820,
+                1024
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-RHFUX8R"
+        },
+        {
+            "filename": "successful-girl-XE6PQYL.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/successful-girl-XE6PQYL-800x999.jpg",
+            "templates": [
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 118605,
+            "dimensions": [
+                820,
+                1024
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-XE6PQYL"
+        },
+        {
+            "filename": "contemporary-artist-WP5XD7F.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/contemporary-artist-WP5XD7F-800x999.jpg",
+            "templates": [
+                {
+                    "source": "templates\/teacher.json",
+                    "name": "Teacher"
+                }
+            ],
+            "filesize": 152938,
+            "dimensions": [
+                820,
+                1024
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-WP5XD7F"
+        },
+        {
+            "filename": "tools-for-watercolor-drawing-e1643358515548.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/tools-for-watercolor-drawing-800x451.jpg",
+            "templates": [
+                {
+                    "source": "templates\/faq.json",
+                    "name": "FAQ"
+                }
+            ],
+            "filesize": 275161,
+            "dimensions": [
+                1920,
+                1083
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-6A5R83Z"
+        },
+        {
+            "filename": "smiling-teacher-and-pupil-painting-in-workshop-of-art-school-e1643358360749.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/smiling-teacher-and-pupil-painting-in-workshop-of-art-school-800x534.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 302264,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-S97KNN3"
+        },
+        {
+            "filename": "graphic-designer-e1643358533161.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/graphic-designer-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 197346,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-4FRS7Q3"
+        },
+        {
+            "filename": "successful-learner-e1643358469652.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/successful-learner-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 187997,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-3975YG3"
+        },
+        {
+            "filename": "logo-DHY2PH.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/logo-DHY2PH-800x207.png",
+            "templates": [
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 24844,
+            "dimensions": [
+                1261,
+                327
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-DHY2PH"
+        },
+        {
+            "filename": "logo-2.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/logo-2-800x207.png",
+            "templates": [
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                }
+            ],
+            "filesize": 26264,
+            "dimensions": [
+                1261,
+                327
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-DHY2PH"
+        },
+        {
+            "filename": "watercolor-paints-and-paintbrushes-P9FTXYY.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/articio\/wp-content\/uploads\/sites\/230\/2022\/01\/watercolor-paints-and-paintbrushes-P9FTXYY-800x534.jpg",
+            "templates": [
+                {
+                    "source": "templates\/404-page.json",
+                    "name": "404 Page"
+                }
+            ],
+            "filesize": 305176,
+            "dimensions": [
+                1920,
+                1281
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-P9FTXYY"
+        }
+    ]
+}

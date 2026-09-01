@@ -1,0 +1,26 @@
+{
+    "landingPage": "/wp-admin/admin.php?page=bookingpress",
+    "preferredVersions": {
+        "php": "8.0",
+        "wp": "6.5.2"
+    },
+    "phpExtensionBundles": [
+    ],
+    "steps": [
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        },
+        {
+            "step": "installPlugin",
+            "pluginZipFile": {
+                "resource": "wordpress.org\/plugins",
+                "slug": "bookingpress-appointment-booking"
+            },
+            "options": {
+                "activate": true
+            }
+        }
+    ]
+}

@@ -1,0 +1,81 @@
+=== Timthumb Vulnerability Scanner ===
+Contributors: peterebutler
+Tags: security, scanning, timthumb, hack, vulnerability
+Requires at least: 3.0
+Tested up to: 3.3.1
+Stable tag: trunk
+
+Scans your wp-content directory for vulnerable instances of timthumb.php, and optionally upgrades them to a safe version.
+
+== Description ==
+
+The recent Timthumb.php vulnerability (discussed [here](http://markmaunder.com/2011/08/02/technical-details-and-scripts-of-the-wordpress-timthumb-php-hack/)) has left scores of unsuspecting bloggers hacked. It's the perfect combination of not so easy to fix for the technically disinclined, and easy to find and exploit for the malicious - resulting in a disastrous number of compromised sites.
+
+The Timthumb Vulnerability Scanner plugin will scan your entire wp-content directory for instances of any outdated and insecure version of the timthumb script, and give you the option to automatically upgrade them with a single click.  Doing so will protect you from hackers looking to exploit this particular vulnerability.
+
+After new, lesser vulnerabilities were found, it became apparent that the plugin needs to be dynamic - able to keep you up to date with the latest version of timthumb, without requiring a plugin upgrade.  The plugin now checks for the latest available version of timthumb routinely (each time you visit the scanner page, but no more than once a day), and can download and install the latest version, rather than the one included with the plugin.  Scans are run daily (unless you disable them via the options link on the scanner page) via wp-cron to keep up with any new plugins or themes you've installed.
+
+More info at [CodeGarage](http://codegarage.com/blog/2011/09/wordpress-timthumb-vulnerability-scanner-plugin/).
+
+Special thanks to [Jacob Gillespie](http://jacobwg.com/) for help with the bulk upgrade feature.
+== Installation ==
+
+1. Upload the `timthumb-vulnerability-scanner to the `/wp-content/plugins/` directory (alternatively, you could use the backend WordPress plugin installer, or install directly from the repository)
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Visit the "Timthumb Scanner" page under the "Tools" Menu
+
+== Frequently Asked Questions ==
+
+= What does this look for specifically? =
+
+The scanner checks for all instances of timthumb it can find.  It doesn't just check filename - it looks for code inside the file, ensuring that regardless of what a theme or plugin developer has named the file, it will be caught.
+
+= Where does it look for them? =
+
+The entire wp-content directory (even if it's not called wp-content) is scanned, including plugins, themes, and uploads.
+
+= I think I've already been hacked - will this clean it up? =
+
+No.  This plugin exists to make sure your door is locked, not drag the burglers out of your house.  It will run some cursory checks to see if a hacker has likely already hit your site, but has no functionality to clean up the problem.
+
+
+== Screenshots ==
+
+1. After clicking "Scan!", you'll be presented with a list of all instances of timthumb on your server.  Outdated or Unsafe instances are marked as such.  Clicking "Upgrade Selected Files" will update selected files to the latest available version of timthumb available on http://code.google.com/p/timthumb/.
+
+== Changelog ==
+
+= 1.54 =
+* Removed references to codegarage.com
+* Fixed trailing whitespace
+
+= 1.53 =
+* Blocked direct access to all PHP plugin files
+* Made sure alerts are only shown when user is viewing in admin
+
+= 1.52 =
+* Added support for Windows servers
+* Fixed bug with version check which implied 2.8.10 was older than 2.8.5
+
+= 1.5 =
+* Added a daily automatic scan
+* Added alerts across the admin section when vulnerable or outdated files are found
+* Fixed issue with updating timthumb src file
+
+= 1.4 =
+* Largely rewrote codebase to clean up code.
+* Added functionality to download latest version of timthumb rather than relying on static version included in plugin.
+* Added functionality to check if there is a newer version of timthumb available.
+* Added scan to find obvious evidence of intrusion using timthumb exploit.
+
+= 1.3 =
+* Updated formatting to conform with WP coding standards, added bulk upgrade feature (Thanks to [Jacob Gillespie](http://jacobwg.com/)!).
+
+= 1.2 =
+* Updated scanner to more reliably find versions of timthumb - avoids conflict with plugin "Category Icons".
+
+= 1.1 =
+* Updated scanner to find *really* old versions of timthumb.
+
+= 1.0 =
+* Initial Commit.
