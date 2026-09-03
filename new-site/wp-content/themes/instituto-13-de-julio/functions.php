@@ -19,9 +19,9 @@ add_action( 'after_setup_theme', 'i13j_setup' );
 function i13j_enqueue_assets() {
 	wp_enqueue_style(
 		'i13j-fonts',
-		'https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap',
+		get_theme_file_uri( 'assets/fonts/fonts.css' ),
 		array(),
-		null
+		wp_get_theme()->get( 'Version' )
 	);
 	wp_enqueue_style(
 		'i13j-style',
