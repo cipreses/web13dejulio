@@ -10,6 +10,18 @@
 # Ubuntu — y se instala PHP 8.2 en vez del php7.4 de los repos de Debian.
 set -e
 
+# Bullseye ya salió del soporte activo en deb.debian.org / security.debian.org
+# (404 consistentes en paquetes puntuales, no un glitch pasajero de mirror).
+# Se repunta a archive.debian.org — el archivo oficial de Debian, no un
+# mirror de terceros — que sí sigue sirviendo todas las versiones viejas.
+# check-valid-until=no porque los Release files ahí ya vencieron hace rato
+# y apt los rechazaría por "desactualizados" si no se lo decimos.
+cat >/etc/apt/sources.list <<'APTSOURCES'
+deb [check-valid-until=no] http://archive.debian.org/debian bullseye main
+deb [check-valid-until=no] http://archive.debian.org/debian-security bullseye-security main
+APTSOURCES
+rm -f /etc/apt/sources.list.d/*.list 2>/dev/null || true
+
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y --no-install-recommends \
