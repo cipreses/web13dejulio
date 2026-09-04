@@ -158,13 +158,26 @@ fi
 
 pct start "${CTID}"
 
-echo "Esperando red dentro del contenedor..."
+echo "Esperando a que el contenedor esté listo..."
+READY=0
 for i in $(seq 1 30); do
-	if pct exec "${CTID}" -- sh -c 'command -v ip >/dev/null && ip addr show eth0 2>/dev/null | grep -q "inet "'; then
+	if pct exec "${CTID}" -- true >/dev/null 2>&1; then
+		READY=1
 		break
 	fi
 	sleep 1
 done
+if [[ "$READY" -ne 1 ]]; then
+	echo "El contenedor no respondió a 'pct exec' después de 30s. Revisá 'pct status ${CTID}' y" >&2
+	echo "'pct exec ${CTID} -- true' a mano antes de seguir." >&2
+	exit 1
+fi
+
+if ! pct exec "${CTID}" -- ping -c1 -W2 "${GATEWAY}" >/dev/null 2>&1; then
+	echo "⚠️  El contenedor todavía no responde ping a su gateway (${GATEWAY})."
+	echo "   Sigo igual, pero si los pasos de git clone / apt de más abajo fallan por"
+	echo "   falta de red, revisá la config de red del contenedor (pct config ${CTID})."
+fi
 
 # ============================================================
 # 3. Paquetes base dentro del contenedor
