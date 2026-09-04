@@ -11,7 +11,7 @@ cp /tmp/new-site-extract/migrate-content.php /var/www/wordpress/migrate-content.
 rm -rf /tmp/new-site-extract /tmp/new-site.tar
 
 cd /var/www/wordpress
-php -r 'require "/var/www/wordpress/wp-load.php"; switch_theme("instituto-13-de-julio");'
-php migrate-content.php
+php8.2 -r 'require "/var/www/wordpress/wp-load.php"; switch_theme("instituto-13-de-julio");'
+php8.2 migrate-content.php
 
 chown -R www-data:www-data /var/www/wordpress

@@ -121,9 +121,12 @@ echo "== Contenedor ${CTID} (${CT_HOSTNAME}) — IP ${IP_CIDR} vía ${BRIDGE}, g
 # fecha con "unsupported ... version" — ya lo confirmamos con Debian 12
 # (2023) y con Ubuntu 22.04 (abril 2022): ambas posteriores a esa build.
 # Debian 11 es la única opción 100% garantizada, porque es el propio sistema
-# operativo con el que está armado ese Proxmox. El costo: PHP 7.4 (el que
-# trae Debian 11 por apt) en vez de 8.x — sigue andando bien para este sitio
-# (WordPress 7.1 + integración SQLite), pero es más viejo.
+# operativo con el que está armado ese Proxmox. El costo: el PHP 7.4 que
+# trae Debian 11 por apt NO sirve para este sitio — el plugin de integración
+# SQLite de WordPress no anda bien ahí (is_blog_installed() tira una
+# excepción sin capturar en vez de devolver false limpio). Por eso
+# install-packages.sh agrega el repo de terceros deb.sury.org e instala
+# PHP 8.2 encima de este mismo Debian 11, en vez de usar el php7.4 nativo.
 #
 # El fix de fondo, si en algún momento querés plantillas más nuevas, es
 # actualizar el propio Proxmox: `apt update && apt install pve-container`
@@ -230,7 +233,7 @@ pct exec "${CTID}" -- bash /tmp/install-wordpress.sh "${WP_TAG}" "${SQLITE_TAG}"
 # ============================================================
 
 pct push "${CTID}" "${SITE_DIR}/proxmox/provision.php" /var/www/wordpress/provision.php
-pct exec "${CTID}" -- php /var/www/wordpress/provision.php "${IP_ADDR}" "${WEB_PORT}"
+pct exec "${CTID}" -- php8.2 /var/www/wordpress/provision.php "${IP_ADDR}" "${WEB_PORT}"
 
 # ============================================================
 # 6. Copiar el tema + migrar contenido (esto SÍ se re-corre cada vez:
@@ -257,7 +260,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/var/www/wordpress
-ExecStart=/usr/bin/php -S ${IP_ADDR}:${WEB_PORT}
+ExecStart=/usr/bin/php8.2 -S ${IP_ADDR}:${WEB_PORT}
 Restart=always
 User=www-data
 
