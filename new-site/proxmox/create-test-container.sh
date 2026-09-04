@@ -156,7 +156,11 @@ else
 		--onboot 1
 fi
 
-pct start "${CTID}"
+if pct status "${CTID}" | grep -q running; then
+	echo "El contenedor ${CTID} ya está corriendo."
+else
+	pct start "${CTID}"
+fi
 
 echo "Esperando a que el contenedor esté listo..."
 sleep 5   # margen para que termine de arrancar antes del primer pct exec
