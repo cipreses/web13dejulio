@@ -37,6 +37,15 @@ cp wp-config-sample.php wp-config.php
 #   define( 'DB_ENGINE', 'sqlite' );
 # Generar claves/salts únicas (no usar las de ejemplo)
 # Opcional para desarrollo: WP_HOME / WP_SITEURL apuntando a localhost
+# Locale: agregar   define( 'WPLANG', 'es_ES' );   y correr una vez
+#   update_option( 'WPLANG', 'es_ES' );   (ver wp-load.php)
+# Nota: wordpress.org está bloqueado en este entorno, así que los .mo de
+# traducción del core (wp-content/languages/es_ES.mo, admin-es_ES.mo, etc.)
+# no se pudieron descargar acá. El locale queda seteado (html lang="es-ES",
+# fechas vía wp_locale) pero el admin y algunas cadenas del core seguirán
+# en inglés hasta instalar el paquete de idioma con `wp language core
+# install es_ES` (o descargándolo a mano) en un entorno con acceso normal
+# a wordpress.org.
 
 # 5. Copiar el tema de este repo al core
 cp -r ../new-site/wp-content/themes/instituto-13-de-julio wp-content/themes/
@@ -54,11 +63,33 @@ if (!is_blog_installed()) {
 # 7. Activar el tema
 php -r "require dirname(__FILE__) . '/wp-load.php'; switch_theme('instituto-13-de-julio');"
 
+# 7b. Permalinks bonitos (imprescindible: sin esto, /historia/, /inscripciones/,
+# etc. devuelven el home en vez de la página real, porque WordPress no puede
+# matchear la URL contra ninguna regla de reescritura)
+php -r "
+require dirname(__FILE__) . '/wp-load.php';
+update_option('permalink_structure', '/%postname%/');
+\$wp_rewrite->init();
+\$wp_rewrite->flush_rules();
+"
+
 # 8. Levantar el servidor de desarrollo
 php -S localhost:8899
 ```
 
 Abrir `http://localhost:8899/` — debería levantar la home con el tema activo.
+
+## Migrar contenido real del legacy
+
+`new-site/migrate-content.php` crea/actualiza (de forma idempotente) las
+páginas curadas a partir de `legacy-site/database/`: Historia, Cuerpo
+Directivo, Proyecto Institucional, Acceso a la 13 e Inscripciones. Correrlo
+parado en la raíz del core, después de instalar y activar el tema:
+
+```bash
+cd core
+php ../new-site/migrate-content.php
+```
 
 ## Estructura del tema
 
@@ -83,13 +114,31 @@ wp-content/themes/instituto-13-de-julio/
 | `contrast` | `#181818` | Texto / negro del logo |
 | `base` | `#FCFCFC` | Fondo |
 
+## Hecho
+
+- Migrado el contenido real desde `legacy-site/database/` para Historia,
+  Cuerpo Directivo y Acceso a la 13 (ver `new-site/migrate-content.php`).
+  Proyecto Institucional queda con el mismo placeholder "Próximamente" que
+  tenía en el legacy, a la espera del texto real.
+- Unificados los 3 flujos de inscripción (Capital/Provincia/Sindicato) en
+  `/inscripciones/`: proceso común de 3 pasos + un bloque desplegable por
+  situación con los 2 Google Forms reales y el requisito adicional de cada
+  caso.
+- Reemplazada "Acceso a la 13" por una grilla simple de 6 enlaces reales
+  (Mis licencias, Gmail, Xhendra, Recibos, Reserva de salas, Recursos para
+  docentes), sin flujo de SSO.
+- Self-host de Archivo, Public Sans e IBM Plex Mono (`assets/fonts/`, subset
+  latin) — ya no depende del CDN de Google Fonts.
+- Locale es_ES configurado (`WPLANG` en wp-config.php + opción de DB). Los
+  `.mo` de traducción del core no se pudieron bajar en este entorno porque
+  wordpress.org está bloqueado; instrucciones para completarlo en el paso 4
+  más arriba.
+
 ## Pendiente
 
-- Migrar/curar el contenido real desde `legacy-site/database/` (páginas,
-  currícula, historia, cuerpo directivo).
-- Unificar los 3 flujos de inscripción (Capital/Provincia/Sindicato).
-- Reemplazar "Acceso a la 13" por una página simple de enlaces (sin SSO).
-- Feed de Instagram embebido (requiere cuenta Business/Creator vinculada a
-  una página de Facebook para usar la API gratuita de Meta).
-- Self-host de las fuentes (Archivo, Public Sans) en vez de Google Fonts CDN.
-- Configurar locale es_ES.
+- Feed de Instagram embebido: se descartó por ahora la integración vía API
+  de Meta (requiere cuenta Business/Creator vinculada a una página de
+  Facebook). Se definió reemplazarla por una galería estática curada a
+  mano, pero el repo solo tiene 3 fotos institucionales reales
+  (`assets/images/`), ya usadas en Historia y en la home — hacen falta más
+  fotos reales del Instituto para armar una galería que no sea repetitiva.
