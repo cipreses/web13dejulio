@@ -9,7 +9,7 @@
 #   bash new-site/proxmox/create-test-container.sh
 #
 # Qué hace:
-#   1. Descarga (si hace falta) la plantilla LXC de Debian 12.
+#   1. Descarga (si hace falta) la plantilla LXC de Ubuntu 22.04 LTS.
 #   2. Crea el contenedor con IP estática, lo arranca.
 #   3. Instala PHP + extensiones + git dentro del contenedor.
 #   4. Instala WordPress core + integración SQLite (mismo método que
@@ -106,13 +106,23 @@ fi
 echo "== Contenedor ${CTID} (${HOSTNAME}) — IP ${IP_CIDR} vía ${BRIDGE}, gw ${GATEWAY} =="
 
 # ============================================================
-# 1. Plantilla LXC (Debian 12)
+# 1. Plantilla LXC (Ubuntu 22.04 LTS)
 # ============================================================
+#
+# Nota: se usa Ubuntu 22.04 en vez de Debian 12 a propósito. En Proxmox VE
+# 7.1-7 (rama vieja, de 2021, previa a que existiera Debian 12), el paquete
+# pve-container no reconoce point-releases nuevos de Debian 12 ("unsupported
+# debian version '12.x'") aunque el contenedor en sí funcione bien — es un
+# chequeo de compatibilidad desactualizado, no una limitación real. Ubuntu
+# 22.04 sí entraba dentro de la ventana de soporte de PVE 7.x y no tiene ese
+# problema de versión. Si preferís Debian igual, la opción es editar
+# /usr/share/perl5/PVE/LXC/Setup/Debian.pm en el host para agregar la
+# versión nueva a la tabla, pero eso queda fuera de este script.
 
 pveam update >/dev/null
-TEMPLATE_FILE=$(pveam available --section system 2>/dev/null | awk '{print $2}' | grep '^debian-12-standard' | sort -V | tail -1)
+TEMPLATE_FILE=$(pveam available --section system 2>/dev/null | awk '{print $2}' | grep '^ubuntu-22.04-standard' | sort -V | tail -1)
 if [[ -z "$TEMPLATE_FILE" ]]; then
-	echo "No encontré ninguna plantilla debian-12-standard en 'pveam available'." >&2
+	echo "No encontré ninguna plantilla ubuntu-22.04-standard en 'pveam available'." >&2
 	exit 1
 fi
 if [[ ! -f "/var/lib/vz/template/cache/${TEMPLATE_FILE}" ]]; then
