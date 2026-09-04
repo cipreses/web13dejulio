@@ -11,12 +11,18 @@
 # Qué hace:
 #   1. Descarga (si hace falta) la plantilla LXC de Debian 11 (bullseye).
 #   2. Crea el contenedor con IP estática, lo arranca.
-#   3. Instala PHP + extensiones + git dentro del contenedor.
-#   4. Instala WordPress core + integración SQLite (mismo método que
-#      new-site/DEV_SETUP.md), vía new-site/proxmox/provision.php.
-#   5. Copia el tema instituto-13-de-julio y corre migrate-content.php.
+#   3. Instala PHP + extensiones + git (install-packages.sh).
+#   4. Instala WordPress core + integración SQLite, mismo método que
+#      new-site/DEV_SETUP.md (install-wordpress.sh + provision.php).
+#   5. Copia el tema instituto-13-de-julio y corre migrate-content.php
+#      (deploy-theme.sh).
 #   6. Deja un servicio systemd (`wp-test.service`) sirviendo el sitio con
 #      `php -S` en el puerto 8899, escuchando en la IP del contenedor.
+#
+# Todos los pasos "dentro del contenedor" corren desde un archivo pusheado
+# con 'pct push' + 'pct exec ... -- bash /ruta/script.sh', nunca como bloque
+# multilínea pasado a 'bash -c' (ver el comentario en el paso 3 sobre por
+# qué). Los scripts de apoyo viven junto a este archivo, en new-site/proxmox/.
 #
 # Se puede volver a correr para actualizar un contenedor ya creado: los
 # pasos 4 y 5 son idempotentes (detectan si WP/el tema ya están y solo
@@ -199,34 +205,24 @@ set -e
 # ============================================================
 # 3. Paquetes base dentro del contenedor
 # ============================================================
+#
+# Nota: los pasos 3, 4 y 6 empujan un script con 'pct push' y lo corren con
+# 'pct exec ... -- bash /ruta/script.sh' en vez de pasarle un bloque
+# multilínea a 'bash -c'. Este pve-container (4.1-2, de Proxmox 7.1) tiene
+# un bug real con argumentos de 'bash -c' que contienen saltos de línea:
+# los pierde y termina llamando "bash -c" sin argumento, con el error
+# "bash: -c: option requires an argument". Con un archivo + un solo comando
+# simple como argumento, no hay saltos de línea en el argv y no pasa.
 
-pct exec "${CTID}" -- bash -c '
-	export DEBIAN_FRONTEND=noninteractive
-	apt-get update
-	apt-get install -y --no-install-recommends \
-		php php-sqlite3 php-xml php-mbstring php-curl php-zip php-gd \
-		git unzip ca-certificates curl
-'
+pct push "${CTID}" "${SITE_DIR}/proxmox/install-packages.sh" /tmp/install-packages.sh
+pct exec "${CTID}" -- bash /tmp/install-packages.sh
 
 # ============================================================
-# 4. WordPress core + integración SQLite (clone, mismo método que
-#    DEV_SETUP.md; el bash acá es simple, sin comillas anidadas)
+# 4. WordPress core + integración SQLite (mismo método que DEV_SETUP.md)
 # ============================================================
 
-pct exec "${CTID}" -- bash -c "
-	set -e
-	mkdir -p /var/www
-	cd /var/www
-	if [ ! -d wordpress ]; then
-		git clone --depth 1 --branch '${WP_TAG}' https://github.com/WordPress/WordPress.git wordpress
-	fi
-	if [ ! -d wordpress/wp-content/plugins/sqlite-database-integration ]; then
-		rm -rf /tmp/sqlite-staging
-		git clone --depth 1 --branch '${SQLITE_TAG}' https://github.com/WordPress/sqlite-database-integration.git /tmp/sqlite-staging
-		cp -rL /tmp/sqlite-staging/packages/plugin-sqlite-database-integration wordpress/wp-content/plugins/sqlite-database-integration
-		rm -rf /tmp/sqlite-staging
-	fi
-"
+pct push "${CTID}" "${SITE_DIR}/proxmox/install-wordpress.sh" /tmp/install-wordpress.sh
+pct exec "${CTID}" -- bash /tmp/install-wordpress.sh "${WP_TAG}" "${SQLITE_TAG}"
 
 # ============================================================
 # 5. Provisionar wp-config.php + instalar WP + permalinks/locale
@@ -246,27 +242,15 @@ tar -cf "${TMP_TAR}" -C "${SITE_DIR}" wp-content/themes/instituto-13-de-julio mi
 pct push "${CTID}" "${TMP_TAR}" /tmp/new-site.tar
 rm -f "${TMP_TAR}"
 
-pct exec "${CTID}" -- bash -c '
-	set -e
-	rm -rf /var/www/wordpress/wp-content/themes/instituto-13-de-julio
-	mkdir -p /tmp/new-site-extract
-	tar -xf /tmp/new-site.tar -C /tmp/new-site-extract
-	cp -r /tmp/new-site-extract/wp-content/themes/instituto-13-de-julio /var/www/wordpress/wp-content/themes/
-	cp /tmp/new-site-extract/migrate-content.php /var/www/wordpress/migrate-content.php
-	rm -rf /tmp/new-site-extract /tmp/new-site.tar
-
-	cd /var/www/wordpress
-	php -r "require \"/var/www/wordpress/wp-load.php\"; switch_theme(\"instituto-13-de-julio\");"
-	php migrate-content.php
-
-	chown -R www-data:www-data /var/www/wordpress
-'
+pct push "${CTID}" "${SITE_DIR}/proxmox/deploy-theme.sh" /tmp/deploy-theme.sh
+pct exec "${CTID}" -- bash /tmp/deploy-theme.sh
 
 # ============================================================
 # 7. Servicio systemd sirviendo el sitio en :8899
 # ============================================================
 
-pct exec "${CTID}" -- bash -c "cat > /etc/systemd/system/wp-test.service" <<EOF
+TMP_SERVICE="/tmp/wp-test-$$.service"
+cat >"${TMP_SERVICE}" <<EOF
 [Unit]
 Description=Instituto 13 de Julio - servidor de testing (php -S)
 After=network.target
@@ -280,6 +264,8 @@ User=www-data
 [Install]
 WantedBy=multi-user.target
 EOF
+pct push "${CTID}" "${TMP_SERVICE}" /etc/systemd/system/wp-test.service
+rm -f "${TMP_SERVICE}"
 
 pct exec "${CTID}" -- systemctl daemon-reload
 pct exec "${CTID}" -- systemctl enable --now wp-test.service
