@@ -32,9 +32,9 @@ CTID="${CTID:-$(pvesh get /cluster/nextid)}"   # ID del contenedor (auto si no s
 HOSTNAME="${HOSTNAME:-mockweb}"
 BRIDGE="${BRIDGE:-vmbr0}"
 
-# Red estática pedida: 192.168.0.130, máscara 255.255.255.240 (=/28), gw 192.168.1.1
+# Red estática pedida: 192.168.0.130, máscara 255.255.240.0 (=/20), gw 192.168.1.1
 IP_ADDR="192.168.0.130"
-NETMASK_CIDR="28"          # 255.255.255.240 == /28
+NETMASK_CIDR="20"          # 255.255.240.0 == /20
 GATEWAY="192.168.1.1"
 DNS="${DNS:-1.1.1.1}"
 
@@ -73,15 +73,32 @@ fi
 
 IP_CIDR="${IP_ADDR}/${NETMASK_CIDR}"
 
-# Alerta si la IP y el gateway están en octetos de red distintos (chequeo
-# simple; con /28 eso normalmente no es ruteable salvo routing entre VLANs).
-IP_NET2=$(echo "$IP_ADDR" | cut -d. -f2)
-GW_NET2=$(echo "$GATEWAY" | cut -d. -f2)
-if [[ "$IP_NET2" != "$GW_NET2" ]]; then
-	echo "⚠️  ATENCIÓN: la IP (${IP_ADDR}) y el gateway (${GATEWAY}) están en octetos"
-	echo "   distintos (192.168.0.x vs 192.168.1.x). Con máscara /28 eso normalmente"
-	echo "   NO es ruteable salvo que tengas routing entre VLANs armado a propósito."
-	echo "   Revisá IP_ADDR / GATEWAY arriba antes de seguir si no es así en tu red."
+# Alerta si el gateway no pertenece a la subred de la IP estática, calculado
+# de verdad a partir de IP/máscara/gateway (no una comparación de octetos a
+# ojo, que con máscaras que no sean /24 puede dar falsos negativos/positivos).
+ip_to_int() {
+	local a b c d
+	IFS='.' read -r a b c d <<<"$1"
+	echo $(((a << 24) + (b << 16) + (c << 8) + d))
+}
+prefix_to_mask_int() {
+	local prefix=$1
+	if [[ "$prefix" -eq 0 ]]; then
+		echo 0
+	else
+		echo $(((0xFFFFFFFF << (32 - prefix)) & 0xFFFFFFFF))
+	fi
+}
+
+MASK_INT=$(prefix_to_mask_int "$NETMASK_CIDR")
+IP_NET=$(($(ip_to_int "$IP_ADDR") & MASK_INT))
+GW_NET=$(($(ip_to_int "$GATEWAY") & MASK_INT))
+
+if [[ "$IP_NET" -ne "$GW_NET" ]]; then
+	echo "⚠️  ATENCIÓN: con máscara /${NETMASK_CIDR}, la IP ${IP_ADDR} y el gateway"
+	echo "   ${GATEWAY} NO están en la misma subred (el gateway no sería alcanzable"
+	echo "   por ARP/L2 desde el contenedor). Revisá IP_ADDR / NETMASK_CIDR / GATEWAY"
+	echo "   arriba antes de seguir."
 	read -r -p "   ¿Continuar de todos modos? [y/N] " confirm
 	[[ "${confirm,,}" == "y" ]] || exit 1
 fi
