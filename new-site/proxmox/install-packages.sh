@@ -18,7 +18,6 @@ set -e
 # y apt los rechazaría por "desactualizados" si no se lo decimos.
 cat >/etc/apt/sources.list <<'APTSOURCES'
 deb [check-valid-until=no] http://archive.debian.org/debian bullseye main
-deb [check-valid-until=no] http://archive.debian.org/debian-security bullseye-security main
 APTSOURCES
 rm -f /etc/apt/sources.list.d/*.list 2>/dev/null || true
 
