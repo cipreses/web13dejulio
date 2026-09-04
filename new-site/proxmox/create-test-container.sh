@@ -29,7 +29,7 @@ set -euo pipefail
 # ============================================================
 
 CTID="${CTID:-$(pvesh get /cluster/nextid)}"   # ID del contenedor (auto si no se fija)
-HOSTNAME="${HOSTNAME:-mockweb}"
+CT_HOSTNAME="${CT_HOSTNAME:-mockweb}"
 BRIDGE="${BRIDGE:-vmbr0}"
 
 # Red estática pedida: 192.168.0.130, máscara 255.255.240.0 (=/20), gw 192.168.1.1
@@ -103,7 +103,7 @@ if [[ "$IP_NET" -ne "$GW_NET" ]]; then
 	[[ "${confirm,,}" == "y" ]] || exit 1
 fi
 
-echo "== Contenedor ${CTID} (${HOSTNAME}) — IP ${IP_CIDR} vía ${BRIDGE}, gw ${GATEWAY} =="
+echo "== Contenedor ${CTID} (${CT_HOSTNAME}) — IP ${IP_CIDR} vía ${BRIDGE}, gw ${GATEWAY} =="
 
 # ============================================================
 # 1. Plantilla LXC (Debian 11 / bullseye)
@@ -144,7 +144,7 @@ if pct status "${CTID}" >/dev/null 2>&1; then
 	echo "El contenedor ${CTID} ya existe, salto pct create."
 else
 	pct create "${CTID}" "${TEMPLATE}" \
-		--hostname "${HOSTNAME}" \
+		--hostname "${CT_HOSTNAME}" \
 		--cores "${CORES}" \
 		--memory "${MEMORY_MB}" \
 		--swap "${SWAP_MB}" \
@@ -159,25 +159,38 @@ fi
 pct start "${CTID}"
 
 echo "Esperando a que el contenedor esté listo..."
+sleep 5   # margen para que termine de arrancar antes del primer pct exec
+
+# set +e acá a propósito: no queremos que un fallo transitorio de 'pct exec'
+# justo después de arrancar el contenedor tire abajo todo el script por
+# set -e (nos pasó: un intento fallido apenas hecho el pct start terminaba
+# el script entero en vez de reintentar).
+set +e
 READY=0
 for i in $(seq 1 30); do
-	if pct exec "${CTID}" -- true >/dev/null 2>&1; then
+	pct exec "${CTID}" -- echo ready >/dev/null 2>&1
+	if [[ $? -eq 0 ]]; then
 		READY=1
 		break
 	fi
 	sleep 1
 done
+set -e
+
 if [[ "$READY" -ne 1 ]]; then
 	echo "El contenedor no respondió a 'pct exec' después de 30s. Revisá 'pct status ${CTID}' y" >&2
-	echo "'pct exec ${CTID} -- true' a mano antes de seguir." >&2
+	echo "'pct exec ${CTID} -- echo ready' a mano antes de seguir." >&2
 	exit 1
 fi
 
-if ! pct exec "${CTID}" -- ping -c1 -W2 "${GATEWAY}" >/dev/null 2>&1; then
+set +e
+pct exec "${CTID}" -- ping -c1 -W2 "${GATEWAY}" >/dev/null 2>&1
+if [[ $? -ne 0 ]]; then
 	echo "⚠️  El contenedor todavía no responde ping a su gateway (${GATEWAY})."
 	echo "   Sigo igual, pero si los pasos de git clone / apt de más abajo fallan por"
 	echo "   falta de red, revisá la config de red del contenedor (pct config ${CTID})."
 fi
+set -e
 
 # ============================================================
 # 3. Paquetes base dentro del contenedor
@@ -275,7 +288,7 @@ pct exec "${CTID}" -- systemctl restart wp-test.service
 sleep 2
 echo
 echo "== Listo =="
-echo "Contenedor: CTID ${CTID}, hostname ${HOSTNAME}, IP ${IP_ADDR}"
+echo "Contenedor: CTID ${CTID}, hostname ${CT_HOSTNAME}, IP ${IP_ADDR}"
 echo "Sitio de testing: http://${IP_ADDR}:${WEB_PORT}/"
 echo
 if command -v curl >/dev/null; then
